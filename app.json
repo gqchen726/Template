@@ -1,0 +1,14 @@
+{
+    "name": "template",
+    "description": "template",
+    "keywords": ["docker","template"],
+    "website": "",
+    "repository": "",
+    "stack": "container",
+    "env": {
+        "port": {
+          "description": "端口",
+          "value": "3000"
+        }
+    }
+}
