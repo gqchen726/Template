@@ -1,24 +1,31 @@
-version: "3.7"
+version: '3.8'
 services:
-  app:
-    image: node:12-alpine
-    command: sh -c "yarn install && yarn run dev"
+  springserver:
+    build:
+      context: .
     ports:
+      - 8000:8000
       - 8080:8080
-    working_dir: /app
+    environment:
+      - SERVER_PORT=8080
+      - MYSQL_URL=jdbc:mysql://mysqlserver/template
     volumes:
       - ./:/app
+    command: ./mvnw spring-boot:run -Dspring-boot.run.profiles=mysql -Dspring-boot.run.jvmArguments="-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:8000"
+
+  mysqlserver:
+    image: mysql:8.0.23
+    ports:
+      - 3306:3306
     environment:
-      MYSQL_HOST: mysql
-      MYSQL_USER: root
-      MYSQL_PASSWORD: secret
-      MYSQL_DB: template
-  mysql:
-    image: mysql:5.7
+      - MYSQL_ROOT_PASSWORD=
+      - MYSQL_ALLOW_EMPTY_PASSWORD=true
+      - MYSQL_USER=gqchen
+      - MYSQL_PASSWORD=gqchen
+      - MYSQL_DATABASE=template
     volumes:
-      - template-mysql-data:/var/lib/mysql
-    environment:
-      MYSQL_ROOT_PASSWORD: secret
-      MYSQL_DATABASE: template
+      - mysql_data:/var/lib/mysql
+      - mysql_config:/etc/mysql/conf.d
 volumes:
-  template-mysql-data:
+  mysql_data:
+  mysql_config:

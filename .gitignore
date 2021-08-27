@@ -31,3 +31,5 @@ Template.iml
 .classpath
 .project
 .settings/
+
+*.log

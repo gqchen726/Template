@@ -1,4 +1,5 @@
 # spring web 内嵌服务器(默认tomcat)的启动端口
+database: mysql
 server:
   port: ${PORT:8080}
 spring:
@@ -6,10 +7,15 @@ spring:
     name: template
   # 定义数据源，连接数据库的信息
   datasource:
-    url: jdbc:mysql://localhost:3306/template?serverTimezone=UTC&characterEncoding=utf-8&useSSL=false
+    url: ${MYSQL_URL:jdbc:mysql://localhost/template}
+    #url: ${MYSQL_URL:jdbc:mysql://default.cs-asia-east1-jnrc.cloudshell.dev:3306/template}
     # mysql 版本为8以下请使用 `com.mysql.jdbc.Driver`
     driver-class-name: com.mysql.cj.jdbc.Driver
-    username: root
-    password: root
+    #driver-class-name: com.mysql.jdbc.Driver
+    username: ${MYSQL_USER:gqchen}
+    password: ${MYSQL_PASS:gqchen}
+    #username: root
+    #password: secret
+    #initialization-mode: always
 mybatis:
   mapper-locations: clsspath:mybatis/mapper/*.xml

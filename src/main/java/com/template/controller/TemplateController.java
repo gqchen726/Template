@@ -19,6 +19,12 @@ public class TemplateController {
     @Autowired
     private ITemplateServer templateServer;
 
+    @GetMapping("/hello")
+    @ApiOperation("helloMessage")
+    public String hello() {
+        return "hello world!";
+    }
+
     @GetMapping("/findAll")
     @ApiOperation("查找所有的用户")
     public ResponseBody<List<User>> findAll() {
