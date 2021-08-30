@@ -6,14 +6,14 @@ spring:
   application:
     name: template
   # 定义数据源，连接数据库的信息
-  datasource:
-    url: ${MYSQL_URL:jdbc:mysql://localhost/template}
-    #url: ${MYSQL_URL:jdbc:mysql://default.cs-asia-east1-jnrc.cloudshell.dev:3306/template}
-    # mysql 版本为8以下请使用 `com.mysql.jdbc.Driver`
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    #driver-class-name: com.mysql.jdbc.Driver
-    username: ${MYSQL_USER:gqchen}
-    password: ${MYSQL_PASS:gqchen}
+#  datasource:
+#    url: ${MYSQL_URL:jdbc:mysql://localhost/template}
+#    #url: ${MYSQL_URL:jdbc:mysql://default.cs-asia-east1-jnrc.cloudshell.dev:3306/template}
+#    # mysql 版本为8以下请使用 `com.mysql.jdbc.Driver`
+#    driver-class-name: com.mysql.cj.jdbc.Driver
+#    #driver-class-name: com.mysql.jdbc.Driver
+#    username: ${MYSQL_USER:gqchen}
+#    password: ${MYSQL_PASS:gqchen}
     #username: root
     #password: secret
     #initialization-mode: always
