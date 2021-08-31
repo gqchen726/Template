@@ -1,1 +1,1 @@
-web: java -jar target/Template-1.0-SNAPSHOT.jar
+web: java  -Dfile.encoding=utf-8 -jar target/Template-1.0-SNAPSHOT.jar
