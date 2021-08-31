@@ -1,6 +1,6 @@
 package com.template.controller;
 
-import com.template.common.ResponseBody;
+import com.template.common.CommonResponseBody;
 import com.template.entity.User;
 import com.template.service.ITemplateServer;
 import io.swagger.annotations.ApiOperation;
@@ -21,43 +21,50 @@ public class TemplateController {
 
     @GetMapping("/hello")
     @ApiOperation("helloMessage")
+    @ResponseBody
     public String hello() {
         return "hello world!";
     }
 
     @GetMapping("/findAll")
     @ApiOperation("查找所有的用户")
-    public ResponseBody<List<User>> findAll() {
-        return new ResponseBody<>(templateServer.findAll());
+    @ResponseBody
+    public CommonResponseBody<List<User>> findAll() {
+        return new CommonResponseBody<>(templateServer.findAll());
     }
 
     @GetMapping("/findOneByPrimaryKey/{id}")
     @ApiOperation("根据id查找一个用户")
-    public ResponseBody<User> findOneByPrimaryKey(@PathVariable Integer id) {
-        return new ResponseBody<>(templateServer.findOneByPrimaryKey(id));
+    @ResponseBody
+    public CommonResponseBody<User> findOneByPrimaryKey(@PathVariable Integer id) {
+        return new CommonResponseBody<>(templateServer.findOneByPrimaryKey(id));
     }
 
     @ApiOperation("根据example查找用户")
     @PostMapping("/findOneByExample")
-    public ResponseBody<List<User>> findOneByExample(@RequestBody User user) {
-        return new ResponseBody<>(templateServer.findOneByExample(user));
+    @ResponseBody
+    public CommonResponseBody<List<User>> findOneByExample(@RequestBody User user) {
+        return new CommonResponseBody<>(templateServer.findOneByExample(user));
     }
 
     @ApiOperation("添加一个用户")
     @PostMapping("/addOne")
-    public ResponseBody<Integer> addOne(@RequestBody User user) {
-        return new ResponseBody<>(templateServer.addOne(user));
+    @ResponseBody
+    public CommonResponseBody<Integer> addOne(@RequestBody User user) {
+        return new CommonResponseBody<>(templateServer.addOne(user));
     }
 
     @ApiOperation("修改一个用户")
     @PostMapping("/editOne")
-    public ResponseBody<Integer> editOne(@RequestBody User user) {
-        return new ResponseBody<>(templateServer.editOne(user));
+    @ResponseBody
+    public CommonResponseBody<Integer> editOne(@RequestBody User user) {
+        return new CommonResponseBody<>(templateServer.editOne(user));
     }
 
     @ApiOperation("删除一个用户")
     @GetMapping("/removeOneByPrimaryKey/{id}")
-    public ResponseBody<Integer> removeOneByPrimaryKey(@PathVariable Integer id) {
-        return new ResponseBody<>(templateServer.removeOneByPrimaryKey(id));
+    @ResponseBody
+    public CommonResponseBody<Integer> removeOneByPrimaryKey(@PathVariable Integer id) {
+        return new CommonResponseBody<>(templateServer.removeOneByPrimaryKey(id));
     }
 }
